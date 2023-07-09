@@ -1,0 +1,33 @@
+name: GPT-3.5 Turbo Code Improvement
+
+on:
+  push:
+    branches:
+      - main  # Change this to the branch you want to trigger the action on
+
+jobs:
+  improve-code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Install OpenAI Python package
+        run: pip install openai
+
+      - name: Run GPT-3.5 Turbo code improvement
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python improve_code.py
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: improve-code
+          title: Code improvement using GPT-3.5 Turbo
+          body: |
+            This pull request includes improvements and fixes to the code using the GPT-3.5 Turbo model.
+          commit-message: Code improvement using GPT-3.5 Turbo
+          delete-branch: true
