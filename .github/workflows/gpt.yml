@@ -3,7 +3,7 @@ name: GPT-3.5 Turbo Code Improvement
 on:
   push:
     branches:
-      - main  # Change this to the branch you want to trigger the action on
+      - master # Change this to the branch you want to trigger the action on
 
 jobs:
   improve-code:
