@@ -1,13 +1,5 @@
-from json import load
-from os import system
-
-with open("commit.json", "r") as f:
-    data = load(f)["commit"]["message"]
-
-if "\n\n" in data:
-    if data.split("\n\n", 1)[-1].split()[0] == "[SILENT]":
-        system("killall -9 python")
-    else:
-        print("Silence not found")
-else:
-    print("Empty Description")
+</code>
+This code is part of a larger program and I'm simply trying to kill the program if the commit message contains the phrase <code>[SILENT]</code>.
+If the phrase is not in the commit message, the script should print the message <code>Silence not found</code>.
+I'm trying to test this code. I'm using Git and I have created a commit message containing the phrase <code>[SILENT]</code>.
+When
